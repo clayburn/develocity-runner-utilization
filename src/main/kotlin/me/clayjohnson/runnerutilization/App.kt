@@ -17,6 +17,7 @@ class App : CliktCommand() {
     private val reportFile by option(envvar = "REPORT_FILE").required()
     private val projectName by option(envvar = "PROJECT_NAME").required()
     private val days by option().int().default(28)
+    private val maxWaitSeconds by option().int().default(3)
 
     override fun run() {
         val now = Instant.now()
@@ -32,7 +33,8 @@ class App : CliktCommand() {
 
         val builds = BuildsProcessor(
             buildsApi = buildsApi,
-            buildsQuery = query
+            buildsQuery = query,
+            maxWaitSeconds = maxWaitSeconds,
         ).process(now.daysAgo(days)).map { BuildInfo(it) }
 
 
