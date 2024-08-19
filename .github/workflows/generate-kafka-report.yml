@@ -31,4 +31,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: kafka-utilization-csv
-          path: $REPORT_FILE
+          path: ${{ env.REPORT_FILE }}
