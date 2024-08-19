@@ -8,7 +8,7 @@ class CsvCreator {
         csv.delete()
         csv.parentFile.mkdirs()
         csv.printWriter().use { out ->
-            out.println("ID,Project Name,Hostname,Build Started,Build Duration")
+            out.println("ID,Project Name,Hostname,Build Started (UTC),Build Duration (ms)")
             builds.forEach { build ->
                 out.println("${build.id},${build.project},${build.hostname},${build.buildStarted},${build.duration}")
             }

@@ -1,14 +1,13 @@
 package me.clayjohnson.runnerutilization
 
 import com.gradle.develocity.api.model.Build
-import java.time.Duration
 import java.time.Instant
 
 data class BuildInfo(
     val id: String,
     val project: String,
     val buildStarted: Instant,
-    val duration: Duration,
+    val duration: Long,
     val hostname: String) {
     constructor(build: Build) : this(
         id = build.id,
@@ -31,11 +30,11 @@ fun Build.buildStarted(): Instant = Instant.ofEpochMilli(this.models?.run {
         ?: throw IllegalArgumentException("Build start time is missing.")
 }!!)
 
-fun Build.buildDuration(): Duration = Duration.ofMillis(this.models?.run {
-    gradleAttributes?.model?.buildStartTime
-        ?: mavenAttributes?.model?.buildStartTime
+fun Build.buildDuration(): Long = this.models?.run {
+    gradleAttributes?.model?.buildDuration
+        ?: mavenAttributes?.model?.buildDuration
         ?: throw IllegalArgumentException("Build duration is missing.")
-}!!)
+}!!
 
 fun Build.hostname(): String = this.models?.run {
     gradleAttributes?.model?.environment
