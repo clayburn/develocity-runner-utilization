@@ -1,4 +1,4 @@
-name: Generate Kakfa Report
+name: Generate Kafka Report
 
 on:
   workflow_dispatch:
