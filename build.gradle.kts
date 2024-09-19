@@ -16,7 +16,7 @@ dependencies {
     implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.17.2")
     implementation("com.google.code.findbugs:jsr305:3.0.2")
     implementation("org.apache.httpcomponents.client5:httpclient5:5.4")
-    implementation("io.github.oshai:kotlin-logging-jvm:5.1.4")
+    implementation("io.github.oshai:kotlin-logging-jvm:7.0.0")
 
     implementation("org.slf4j:slf4j-api:2.0.16")
     runtimeOnly("org.slf4j:slf4j-simple:2.0.16")
